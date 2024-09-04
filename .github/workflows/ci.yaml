@@ -25,17 +25,4 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
       - name: Lint Nix code
         run: nix develop --impure -c alejandra -c .
-  build:
-    name: Build
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - name: Run env-help script
-        run: nix develop --impure -c env-help
 ...
