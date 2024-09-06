@@ -12,12 +12,13 @@ with lib; {
   };
   config = mkIf config.env-help.enable {
     scripts."env-help" = {
-      description = "A help message for development environments.";
+      description = "Lists available scripts and their descriptions.";
       # TODO: Make it pretty
-      # TODO: Filter out env-help from the listed scripts
-      exec = ''
+      exec = let
+        scripts = builtins.removeAttrs config.scripts ["env-help"];
+      in ''
         ${pkgs.gnused}/bin/sed -e 's| |••|g' -e 's|=| |' <<EOF | ${pkgs.util-linuxMinimal}/bin/column -t | ${pkgs.gnused}/bin/sed -e 's|^|> |' -e 's|••| |g'
-        ${generators.toKeyValue {} (mapAttrs (_name: value: value.description) config.scripts)}
+        ${generators.toKeyValue {} (mapAttrs (_name: value: value.description) scripts)}
         EOF
       '';
     };
