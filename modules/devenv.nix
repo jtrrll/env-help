@@ -58,6 +58,19 @@
             statix.enable = true;
           };
         };
+        scripts = {
+          "lolcow" = {
+            description = "Takes printf-like arguments and pipes the output through cowsay and lolcat.";
+            exec = ''
+              (${pkgs.uutils-coreutils-noprefix}/bin/printf "$@") | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
+            '';
+          };
+          "no-desc-lolcow" = {
+            exec = ''
+              (${pkgs.uutils-coreutils-noprefix}/bin/printf "$@") | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
+            '';
+          };
+        };
       };
     };
   };
