@@ -80,7 +80,7 @@
             '';
           };
           "test" = {
-            description = "Run all unit tests.";
+            description = "Runs all unit tests.";
             exec = ''
               ${pkgs.uutils-coreutils-noprefix}/bin/printf "DEMO SCRIPT: test"
             '';
