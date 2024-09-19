@@ -4,15 +4,15 @@ Set FontFamily "Hack Nerd Font Mono"
 Set FontSize 28
 Set Padding 10
 Set Theme "catppuccin-frappe"
-Set TypingSpeed 400ms
+Set TypingSpeed 100ms
 
-Set Width 1000
-Set Height 600
+Set Width 800
+Set Height 400
 
 Require env-help
 
-Sleep 1s
+Sleep 1000ms
 Type "env-help"
-Sleep 1s
+Sleep 500ms
 Enter
-Sleep 10s
+Sleep 10000ms

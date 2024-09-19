@@ -12,11 +12,6 @@
 
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [
-        ./modules
-      ];
-      flake = {
-        "devenvModule" = import ./env-help.nix;
-      };
+      imports = [./modules];
     };
 }
