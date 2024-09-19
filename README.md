@@ -8,6 +8,8 @@
 A help message for development environments.
 A [devenv](https://devenv.sh/) module written in [Nix](https://nixos.org/).
 
+![Demo](./demo.gif)
+
 ## Usage
 
 1. Import the `devenvModule` within a [devenv](https://devenv.sh/) configuration.

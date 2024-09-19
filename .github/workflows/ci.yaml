@@ -24,5 +24,5 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: Lint Nix code
-        run: nix develop --impure -c alejandra -c .
+        run: nix develop --impure --command alejandra -c .
 ...
