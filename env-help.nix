@@ -19,7 +19,7 @@
             script = lib.trim name;
             description = lib.trim value.description;
           in
-            lib.nameValuePair script
+            lib.nameValuePair "  ${script}"
             (
               if description != ""
               then "# ${description}"

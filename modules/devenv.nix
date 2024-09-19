@@ -23,6 +23,7 @@
         };
         packages = [
           pkgs.commitizen
+          (pkgs.nerdfonts.override {fonts = ["Hack"];})
         ];
         pre-commit = {
           default_stages = ["pre-push"];
@@ -59,15 +60,29 @@
           };
         };
         scripts = {
-          "lolcow" = {
-            description = "Takes printf-like arguments and pipes the output through cowsay and lolcat.";
+          "demo" = {
+            description = "Generates a demo GIF.";
             exec = ''
-              (${pkgs.uutils-coreutils-noprefix}/bin/printf "$@") | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
+              PATH="${pkgs.bashInteractive}/bin:$PATH"
+              ${pkgs.vhs}/bin/vhs "$DEVENV_ROOT"/demo.tape
             '';
           };
-          "no-desc-lolcow" = {
+          "build" = {
+            description = "Builds the project binary.";
             exec = ''
-              (${pkgs.uutils-coreutils-noprefix}/bin/printf "$@") | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
+              ${pkgs.uutils-coreutils-noprefix}/bin/printf "DEMO SCRIPT: build"
+            '';
+          };
+          "lint" = {
+            description = "Lints the project.";
+            exec = ''
+              ${pkgs.uutils-coreutils-noprefix}/bin/printf "DEMO SCRIPT: lint"
+            '';
+          };
+          "test" = {
+            description = "Run all unit tests.";
+            exec = ''
+              ${pkgs.uutils-coreutils-noprefix}/bin/printf "DEMO SCRIPT: test"
             '';
           };
         };
