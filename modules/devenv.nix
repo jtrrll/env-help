@@ -76,7 +76,7 @@
           "lint" = {
             description = "Lints the project.";
             exec = ''
-              ${pkgs.uutils-coreutils-noprefix}/bin/printf "DEMO SCRIPT: lint"
+              ${pkgs.gum}/bin/gum spin --show-error --spinner line --title "nix fmt" -- nix fmt
             '';
           };
           "test" = {
