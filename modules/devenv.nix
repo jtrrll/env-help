@@ -22,8 +22,7 @@
           nix.enable = true;
         };
         packages = [
-          pkgs.commitizen
-          (pkgs.nerdfonts.override {fonts = ["Hack"];})
+          pkgs.nerd-fonts.hack
         ];
         pre-commit = {
           default_stages = ["pre-push"];
@@ -35,7 +34,6 @@
               stages = ["pre-commit"];
             };
             check-yaml.enable = true;
-            commitizen.enable = true;
             deadnix.enable = true;
             detect-private-keys = {
               enable = true;
@@ -76,7 +74,7 @@
           "lint" = {
             description = "Lints the project.";
             exec = ''
-              ${pkgs.gum}/bin/gum spin --show-error --spinner line --title "nix fmt" -- nix fmt
+              nix fmt "$DEVENV_ROOT" -- --quiet
             '';
           };
           "test" = {
